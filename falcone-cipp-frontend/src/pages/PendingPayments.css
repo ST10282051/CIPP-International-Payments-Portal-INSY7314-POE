@@ -1,0 +1,38 @@
+.pending-payments-container {
+  min-height: 100vh;
+  background-color: black;
+  color: orange;
+  padding: 1.5rem;
+}
+
+.payment-card {
+  background-color: #1f1f1f;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s;
+}
+
+.payment-card:hover {
+  background-color: #2a2a2a;
+}
+
+.decision-button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.approve {
+  background-color: green;
+  color: black;
+}
+
+.reject {
+  background-color: red;
+  color: black;
+}

@@ -1,0 +1,153 @@
+/* ProfilePage.css */
+
+.profile-page {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Page Header */
+.profile-page h2 {
+  color: #111827;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Alerts */
+.success-alert,
+.error-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.success-alert {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.error-alert {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Form */
+.profile-form .form-group {
+  margin-bottom: 15px;
+}
+
+.profile-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 12px;
+  gap: 8px;
+  background-color: #f9fafb;
+  transition: border-color 0.2s;
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+.input-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.input-wrapper:focus-within {
+  border-color: #3b82f6;
+}
+
+/* Profile picture */
+.profile-picture-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-picture-wrapper img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #d1d5db;
+}
+
+/* Buttons */
+.profile-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-form button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.profile-form button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+/* Back or cancel button */
+.back-button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #f3f4f6;
+  color: #111827;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background-color: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profile-page {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .profile-picture-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

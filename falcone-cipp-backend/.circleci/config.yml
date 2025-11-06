@@ -1,0 +1,40 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.0
+
+jobs:
+  test-and-sonar:
+    docker:
+      - image: cimg/node:18.20
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
+          command: npm ci
+
+      - run:
+          name: Run Tests with Coverage
+          command: npm run test:ci
+
+      - run:
+          name: Run SonarScanner
+          command: |
+            # Download SonarScanner CLI
+            curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+            unzip -q sonar-scanner.zip -d sonar-scanner
+
+            # Execute SonarScanner
+            ./sonar-scanner/sonar-scanner-*/bin/sonar-scanner \
+              -Dsonar.projectKey=falcone-cipp \
+              -Dsonar.sources=src \
+              -Dsonar.exclusions=**/node_modules/**,**/tests/**,.circleci/config.yml \
+              -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+              -Dsonar.host.url=$SONAR_HOST_URL \
+              -Dsonar.login=$SONAR_TOKEN
+
+workflows:
+  build:
+    jobs:
+      - test-and-sonar

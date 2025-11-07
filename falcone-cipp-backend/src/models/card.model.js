@@ -1,22 +1,31 @@
 import mongoose from "mongoose";
 
 const cardSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  cardNumber: { type: String, required: true },
-  cardHolder: { type: String, required: true },
-  expiryMonth: { type: Number, required: true, min: 1, max: 12 },
-  expiryYear: { type: Number, required: true },
-  cvv: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
-});
+  cardHolder: {
+    type: String,
+    required: [true, "Card holder name is required"],
+  },
+  cardNumber: {
+    type: String,
+    required: [true, "Card number is required"],
+    match: [/^\d{16}$/, "Card number must be 16 digits"],
+  },
+  expiry: {
+    type: String,
+    required: [true, "Expiry date is required"],
+    match: [/^\d{2}\/\d{2}$/, "Expiry must be in MM/YY format"],
+  },
+  cvv: {
+    type: String,
+    required: [true, "CVV is required"],
+    match: [/^\d{3,4}$/, "CVV must be 3 or 4 digits"],
+  },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+}, { timestamps: true });
 
-// Mask card number for output
-cardSchema.methods.toJSON = function() {
-  const obj = this.toObject();
-  obj.cardNumber = obj.cardNumber.replace(/\d(?=\d{4})/g, "*");
-  obj.cvv = undefined; // never return CVV
-  return obj;
-};
-
-export default mongoose.model("Card", cardSchema);
-// (The Pi Guy Blog, n.d.). 
+const Card = mongoose.model("Card", cardSchema);
+export default Card;

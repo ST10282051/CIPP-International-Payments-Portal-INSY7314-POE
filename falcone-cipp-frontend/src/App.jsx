@@ -8,11 +8,11 @@ import PendingPayments from "./pages/PendingPayments";
 import AllPayments from "./pages/AllPayments";
 import UserPaymentHistory from "./pages/UserPaymentHistory";
 import PaymentForm from "./pages/PaymentForm";
-import PaymentHistory from "./pages/PaymentHistory"; 
+import PaymentHistory from "./pages/PaymentHistory";
 import AddCustomer from "./pages/AddCustomer";
 import AllUsers from "./pages/AllUsers";
 import UserDetails from "./pages/UserDetails";
-import ProfilePage from "./pages/ProfilePage"; 
+import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import api, { getPayments } from "./api/axios";
 
@@ -29,9 +29,8 @@ export default function App() {
     try {
       const res = await getPayments();
       const fetchedPayments = res.data || [];
-      // Sort by date (newest first)
-      fetchedPayments.sort((a, b) => 
-        new Date(b.createdAt || b.date) - new Date(a.createdAt || a.date)
+      fetchedPayments.sort(
+        (a, b) => new Date(b.createdAt || b.date) - new Date(a.createdAt || a.date)
       );
       setTransactions(fetchedPayments);
       return fetchedPayments;
@@ -39,6 +38,16 @@ export default function App() {
       console.error("Failed to fetch payments:", err.response?.data || err.message);
       return [];
     }
+  };
+
+  // Logout
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    delete api.defaults.headers.common["Authorization"];
+    setRole(null);
+    setUser({});
+    setTransactions([]);
+    navigate("/login");
   };
 
   // Load token and user info
@@ -50,6 +59,13 @@ export default function App() {
 
     try {
       const payload = JSON.parse(atob(token.split(".")[1]));
+
+      // Check token expiration
+      if (Date.now() >= payload.exp * 1000) {
+        console.warn("Token expired");
+        return handleLogout();
+      }
+
       setRole(payload.role);
 
       if (payload.role === "customer") {
@@ -76,15 +92,6 @@ export default function App() {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    delete api.defaults.headers.common["Authorization"];
-    setRole(null);
-    setUser({});
-    setTransactions([]);
-    navigate("/");
-  };
-
   // Customer navigation
   const handleNavigate = (view, options = {}) => {
     if (view === "payment") {
@@ -95,17 +102,15 @@ export default function App() {
     }
   };
 
-  // Handle adding a new transaction and refresh payment list
+  // Add transaction and optionally update cards
   const handleAddTransaction = async (tx, updatedCards = null) => {
-    // Add the new transaction immediately for instant feedback
     setTransactions((prev) => [tx, ...prev]);
-    
-    // Update cards if provided
+
     if (updatedCards) {
       setUser((prev) => ({ ...prev, cards: updatedCards }));
     }
-    
-    // Refresh the full payment list from server to ensure sync
+
+    // Refresh payments after a short delay
     setTimeout(() => {
       fetchCustomerPayments();
     }, 1000);
@@ -113,17 +118,12 @@ export default function App() {
 
   const handleBackToDashboard = () => {
     setPaymentPrefillCard(null);
-    // Refresh payments when returning to dashboard
     fetchCustomerPayments();
     navigate("/customer");
   };
 
-  // Refresh payments function to be passed to child components
-  const refreshPayments = () => {
-    return fetchCustomerPayments();
-  };
+  const refreshPayments = () => fetchCustomerPayments();
 
-  /* -------------------- Routes -------------------- */
   return (
     <Routes>
       {/* Public routes */}
@@ -148,7 +148,7 @@ export default function App() {
       />
 
       <Route
-        path="/customer/profile" 
+        path="/customer/profile"
         element={
           <ProtectedRoute allowedRoles={["customer"]}>
             <ProfilePage />
@@ -175,10 +175,7 @@ export default function App() {
         path="/payment-history"
         element={
           <ProtectedRoute allowedRoles={["customer"]}>
-            <PaymentHistory 
-              onBack={handleBackToDashboard}
-              refreshPayments={refreshPayments}
-            />
+            <PaymentHistory onBack={handleBackToDashboard} refreshPayments={refreshPayments} />
           </ProtectedRoute>
         }
       />
@@ -192,7 +189,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/pending"
         element={
@@ -201,7 +197,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/all-payments"
         element={
@@ -210,7 +205,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/user-payments/:userId"
         element={
@@ -219,7 +213,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/add-customer"
         element={
@@ -228,7 +221,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/all-users"
         element={
@@ -237,7 +229,6 @@ export default function App() {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/employee/user-details/:userId"
         element={
@@ -249,3 +240,4 @@ export default function App() {
     </Routes>
   );
 }
+// (Code Bless You , 2025). 

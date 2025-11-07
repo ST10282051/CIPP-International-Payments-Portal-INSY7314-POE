@@ -25,7 +25,24 @@ const storage = multer.diskStorage({
     cb(null, `${req.user.id}-${Date.now()}${ext}`);
   },
 });
-export const upload = multer({ storage });
+
+//DoS vulneribility detected - export const upload = multer({ storage });
+export const upload = multer({
+  storage,
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
+  fileFilter: (req, file, cb) => {
+    // Optional: restrict file types
+    const allowedTypes = /jpeg|jpg|png/;
+    const ext = path.extname(file.originalname).toLowerCase();
+    if (allowedTypes.test(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Unsupported file type"));
+    }
+  },
+});
 
 /* -------------------- Validation Schemas -------------------- */
 const cardSchema = Joi.object({

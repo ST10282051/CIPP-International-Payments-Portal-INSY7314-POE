@@ -21,6 +21,18 @@ app.use(security.sanitize.xssClean);
 app.use(security.limiter);
 
 // ---------------------------
+// Limit Content-Length for uploads
+// ---------------------------
+app.use((req, res, next) => {
+  const maxBytes = 5 * 1024 * 1024;
+  const contentLength = parseInt(req.headers["content-length"] || "0", 10);
+  if (contentLength > maxBytes) {
+    return res.status(413).json({ error: "Payload too large" });
+  }
+  next();
+});
+
+// ---------------------------
 // Body parser & compression
 // ---------------------------
 app.use(express.json({ limit: "10kb" }));

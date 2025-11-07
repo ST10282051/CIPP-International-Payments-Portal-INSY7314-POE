@@ -1,0 +1,16 @@
+# Dockerfile.knip
+FROM node:20
+
+WORKDIR /app
+
+# Copy package files only
+COPY package.json package-lock.json* ./
+
+# Install dependencies inside container (will build native bindings for Linux)
+RUN npm install
+
+# Copy the rest of the project
+COPY . .
+
+# Default command to run knip
+CMD ["npx", "knip", "--workspace", ".", "--include", "files,dependencies,exports", "--exclude", "uploads,scripts,tests"]

@@ -10,14 +10,14 @@ import mongoSanitize from "express-mongo-sanitize";
 import xssClean from "xss-clean";
 import morgan from "morgan";
 import winston from "winston";
-import connectDB from "./src/config/database.js";
+import connectDB from "./config/database.js";
 
 // ROUTES
-import authRoutes from "./src/routes/auth.routes.js";
-import customerRoutes from "./src/routes/customer.routes.js";
-import employeeRoutes from "./src/routes/employee.routes.js";
-import cardRoutes from "./src/routes/card.routes.js";
-import swiftRoutes from "./src/routes/swift.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import customerRoutes from "./routes/customer.routes.js";
+import employeeRoutes from "./routes/employee.routes.js";
+import cardRoutes from "./routes/card.routes.js";
+import swiftRoutes from "./routes/swift.routes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();

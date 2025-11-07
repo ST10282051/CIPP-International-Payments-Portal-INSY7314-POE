@@ -4,9 +4,9 @@
   max-width: 500px;
   margin: 50px auto;
   padding: 30px;
-  background: #ffffff;
+  background: #000000;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2);
   font-family: 'Inter', sans-serif;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .add-customer-page h2 {
-  color: #111827;
+  color: #ff8c00;
   font-size: 1.8rem;
   font-weight: 600;
   margin: 0;
@@ -32,7 +32,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
   color: white;
   border: none;
   border-radius: 8px;
@@ -40,12 +40,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 140, 0, 0.3);
 }
 
 .btn-view-users:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.5);
 }
 
 .btn-icon-header {
@@ -65,13 +65,15 @@
 }
 
 .error-alert {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: #3d0000;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
 }
 
 .success-alert {
-  background: #d1fae5;
-  color: #065f46;
+  background: #002d00;
+  color: #4ade80;
+  border: 1px solid #4ade80;
 }
 
 .add-customer-form .form-group {
@@ -82,17 +84,17 @@
   display: block;
   font-weight: 500;
   margin-bottom: 6px;
-  color: #374151;
+  color: #ff8c00;
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
-  border: 1px solid #d1d5db;
+  border: 1px solid #333333;
   border-radius: 8px;
   padding: 8px 12px;
   gap: 8px;
-  background-color: #f9fafb;
+  background-color: #1a1a1a;
   transition: border-color 0.2s;
 }
 
@@ -102,28 +104,28 @@
   outline: none;
   background: transparent;
   font-size: 0.95rem;
-  color: #111827;
+  color: #ffffff;
 }
 
 .input-wrapper input::placeholder {
-  color: #9ca3af;
+  color: #666666;
 }
 
 .input-wrapper svg {
-  color: #6b7280;
+  color: #ff8c00;
 }
 
 .input-wrapper:focus-within {
-  border-color: #3b82f6;
+  border-color: #ff8c00;
 }
 
 .add-customer-form button {
   width: 100%;
   padding: 10px;
-  background-color: #3b82f6;
-  color: #ffffff;
+  background-color: #ff8c00;
+  color: #000000;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -131,30 +133,32 @@
 }
 
 .add-customer-form button:disabled {
-  background-color: #93c5fd;
+  background-color: #664400;
+  color: #999999;
   cursor: not-allowed;
 }
 
 .add-customer-form button:hover:not(:disabled) {
-  background-color: #2563eb;
+  background-color: #ff9f1a;
 }
 
 .back-button {
   margin-top: 15px;
   width: 100%;
   padding: 10px;
-  background-color: #f3f4f6;
-  color: #111827;
+  background-color: #1a1a1a;
+  color: #ff8c00;
   font-size: 0.95rem;
   font-weight: 500;
-  border: none;
+  border: 1px solid #333333;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
 }
 
 .back-button:hover {
-  background-color: #e5e7eb;
+  background-color: #2a2a2a;
+  border-color: #ff8c00;
 }
 
 /* Responsive */

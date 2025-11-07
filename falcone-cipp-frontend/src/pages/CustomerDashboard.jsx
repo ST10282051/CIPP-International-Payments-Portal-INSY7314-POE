@@ -11,7 +11,7 @@ import {
   User, 
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { getCards, getPayments } from "../api/axios"; // Import the named functions
+import { getCards, getPayments } from "../api/axios"; 
 import './CustomerDashboard.css';
 import FalconLogo from "../assets/falconecipplogo.png"; 
 
@@ -34,15 +34,15 @@ const CustomerDashboard = () => {
         setLoading(true);
         const token = localStorage.getItem("token");
         if (!token) {
-          navigate("/");  // Changed from "/login" to "/"
+          navigate("/");  
           return;
         }
 
-        // Fetch cards - FIXED: Now uses correct endpoint
+        // Fetch cards 
         const cardsRes = await getCards();
         setCards(cardsRes.data || []);
 
-        // Fetch payments - FIXED: Now uses correct endpoint
+        // Fetch payments
         const paymentsRes = await getPayments();
         const txs = paymentsRes.data || [];
         setTransactions(txs);
@@ -56,7 +56,7 @@ const CustomerDashboard = () => {
       } catch (err) {
         console.error("Dashboard load error:", err);
         localStorage.removeItem("token");
-        navigate("/");  // Changed from "/login" to "/"
+        navigate("/");  
       } finally {
         setLoading(false);
       }
@@ -81,7 +81,7 @@ const CustomerDashboard = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/");  // Changed from "/login" to "/"
+    navigate("/"); 
   };
 
   const handleCurrencyChange = (e) => setCurrency(e.target.value);

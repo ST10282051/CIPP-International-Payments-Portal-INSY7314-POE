@@ -92,7 +92,7 @@ app.use(
 // ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/customers", customerRoutes);
-app.use("/api/cards", cardRoutes);
+app.use("/api/customers/cards", cardRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/swift", swiftRoutes);
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));

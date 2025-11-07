@@ -5,18 +5,19 @@
   display: flex;
   justify-content: center;
   padding: 40px 20px;
-  background: #f8fafc;
+  background: #000; 
   min-height: 100vh;
   font-family: "Inter", sans-serif;
+  color: #f5f5f5;
 }
 
 .user-payments-container {
   width: 100%;
   max-width: 1100px;
-  background: #fff;
+  background: #0a0a0a; 
   border-radius: 16px;
   padding: 32px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
 }
 
@@ -37,14 +38,14 @@
   gap: 8px;
   background: transparent;
   border: none;
-  color: #475569;
+  color: #ffa500;
   font-weight: 600;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 .btn-back:hover {
-  color: #2563eb;
+  color: #ffb733;
 }
 
 .header-title-section {
@@ -57,23 +58,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eef2ff;
+  background: #1a1a1a;
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  color: #4338ca;
+  color: #ffa500;
 }
 
 .user-page-title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff;
   margin: 0;
 }
 
 .user-page-subtitle {
   font-size: 0.95rem;
-  color: #64748b;
+  color: #bbbbbb;
   margin-top: 4px;
 }
 
@@ -99,48 +100,25 @@
 
 .user-stat-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(255, 165, 0, 0.25);
 }
 
-.stat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Orange gradient cards */
+.card-orange {
+  background: linear-gradient(135deg, #ff8c00, #ff6600);
 }
 
-.stat-icon-circle {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-purple {
+  background: #000;
 }
 
-.trend-icon {
-  opacity: 0.6;
+.card-green {
+  background: linear-gradient(135deg, #22c55e, #15803d);
 }
 
-.stat-body {
-  margin-top: 12px;
+.card-blue {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
 }
-
-.stat-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.stat-value {
-  font-size: 1.6rem;
-  font-weight: 700;
-}
-
-/* Card color variations */
-.card-purple { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
-.card-green  { background: linear-gradient(135deg, #10b981, #059669); }
-.card-blue   { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
-.card-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
 /* ------------------------
    Payment Methods Section
@@ -152,7 +130,7 @@
 .section-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffa500;
   margin-bottom: 20px;
 }
 
@@ -163,8 +141,8 @@
 }
 
 .card-item {
-  background: #f9fafb;
-  border: 1px solid #e2e8f0;
+  background: #121212;
+  border: 1px solid #222;
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -174,36 +152,36 @@
 }
 
 .card-item:hover {
-  background: #eef2ff;
-  border-color: #c7d2fe;
+  background: #1c1c1c;
+  border-color: #ff8c00;
 }
 
 .card-icon-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #6366f1;
+  color: #ffa500;
   margin-bottom: 10px;
 }
 
 .card-holder {
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
 }
 
 .card-number {
   font-size: 0.9rem;
-  color: #475569;
+  color: #ccc;
 }
 
 .card-expiry {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #999;
 }
 
 .usage-badge {
-  background: #e0e7ff;
-  color: #3730a3;
+  background: #332200;
+  color: #ffb84d;
   border-radius: 12px;
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -234,32 +212,33 @@
 }
 
 .filter-btn-small {
-  border: 1px solid #cbd5e1;
-  background: #fff;
+  border: 1px solid #333;
+  background: #0f0f0f;
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #334155;
+  color: #ccc;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .filter-btn-small:hover {
-  background: #e2e8f0;
+  background: #222;
+  color: #ffa500;
 }
 
 .filter-btn-small-active {
-  background: #2563eb;
-  color: #fff;
-  border-color: #2563eb;
+  background: #ffa500;
+  color: #000;
+  border-color: #ffa500;
 }
 
 /* Table Styles */
 .history-table-wrapper {
   overflow-x: auto;
   border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #222;
 }
 
 .history-table {
@@ -272,17 +251,17 @@
 .history-table td {
   padding: 12px 16px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #222;
 }
 
 .history-table th {
-  background: #f1f5f9;
-  color: #475569;
+  background: #111;
+  color: #ffa500;
   font-weight: 600;
 }
 
 .history-row:hover {
-  background: #f9fafb;
+  background: #1a1a1a;
 }
 
 /* Columns */
@@ -293,17 +272,17 @@
 }
 
 .date-icon-small {
-  color: #2563eb;
+  color: #ffa500;
 }
 
 .date-main {
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
 }
 
 .date-time {
   font-size: 0.8rem;
-  color: #64748b;
+  color: #aaa;
 }
 
 .amount-column {
@@ -311,12 +290,12 @@
   align-items: center;
   gap: 6px;
   font-weight: 600;
-  color: #1e293b;
+  color: #fff;
 }
 
 .currency-label {
   font-size: 0.85rem;
-  color: #475569;
+  color: #ccc;
 }
 
 .card-column {
@@ -325,13 +304,8 @@
   gap: 8px;
 }
 
-.card-info-inline {
-  display: flex;
-  flex-direction: column;
-}
-
 .card-icon-small {
-  color: #6366f1;
+  color: #ffa500;
 }
 
 .status-badge-history {
@@ -344,18 +318,18 @@
 }
 
 .status-approved {
-  background: #dcfce7;
-  color: #166534;
+  background: rgba(22, 163, 74, 0.2);
+  color: #22c55e;
 }
 
 .status-pending {
-  background: #fef9c3;
-  color: #854d0e;
+  background: rgba(234, 179, 8, 0.2);
+  color: #facc15;
 }
 
 .status-rejected {
-  background: #fee2e2;
-  color: #991b1b;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
 }
 
 /* ------------------------
@@ -364,13 +338,13 @@
 .empty-state {
   text-align: center;
   padding: 40px 20px;
-  color: #64748b;
+  color: #aaa;
 }
 
 .empty-icon {
   width: 48px;
   height: 48px;
-  color: #94a3b8;
+  color: #ff8c00;
   margin-bottom: 10px;
 }
 
@@ -378,11 +352,12 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 6px;
-  color: #334155;
+  color: #fff;
 }
 
 .empty-description {
   font-size: 0.9rem;
+  color: #bbb;
 }
 
 /* ------------------------
@@ -400,8 +375,8 @@
 .loading-spinner-large {
   width: 50px;
   height: 50px;
-  border: 4px solid #e2e8f0;
-  border-top: 4px solid #2563eb;
+  border: 4px solid #222;
+  border-top: 4px solid #ffa500;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 16px;
@@ -409,7 +384,7 @@
 
 .loading-text {
   font-size: 1rem;
-  color: #475569;
+  color: #ccc;
 }
 
 @keyframes spin {

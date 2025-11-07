@@ -2,7 +2,7 @@
 
 .all-users-wrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #000000;
 }
 
 .all-users-container {
@@ -21,40 +21,42 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: white;
-  border: none;
+  background: #1a1a1a;
+  border: 1px solid #333333;
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #4a5568;
+  color: #ff8c00;
   cursor: pointer;
   transition: all 0.2s;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.2);
 }
 
 .btn-back-users:hover {
-  background: #f7fafc;
+  background: #2a2a2a;
+  border-color: #ff8c00;
   transform: translateX(-4px);
 }
 
 .header-title {
-  background: white;
+  background: #0a0a0a;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 4px 6px rgba(255, 140, 0, 0.1);
 }
 
 .page-title-users {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a202c;
+  color: #ff8c00;
   margin: 0 0 0.5rem 0;
 }
 
 .page-subtitle-users {
   font-size: 1rem;
-  color: #718096;
+  color: #999999;
   margin: 0;
 }
 
@@ -67,10 +69,11 @@
 }
 
 .stat-box-users {
-  background: white;
+  background: #0a0a0a;
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 4px 6px rgba(255, 140, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -79,6 +82,7 @@
 
 .stat-box-users:hover {
   transform: translateY(-2px);
+  border-color: #ff8c00;
 }
 
 .stat-icon-wrapper-users {
@@ -91,18 +95,18 @@
 }
 
 .stat-total-users .stat-icon-wrapper-users {
-  background: #e3f2fd;
-  color: #1976d2;
+  background: #1a0f00;
+  color: #ff8c00;
 }
 
 .stat-active-users .stat-icon-wrapper-users {
-  background: #e8f5e9;
-  color: #388e3c;
+  background: #1a1000;
+  color: #ffa500;
 }
 
 .stat-cards-users .stat-icon-wrapper-users {
-  background: #fff3e0;
-  color: #f57c00;
+  background: #1a0a00;
+  color: #ff6b00;
 }
 
 .stat-icon-users {
@@ -116,14 +120,14 @@
 
 .stat-label-users {
   font-size: 0.875rem;
-  color: #718096;
+  color: #999999;
   margin: 0 0 0.25rem 0;
 }
 
 .stat-value-users {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a202c;
+  color: #ff8c00;
   margin: 0;
 }
 
@@ -134,9 +138,10 @@
 
 .search-box-users {
   position: relative;
-  background: white;
+  background: #0a0a0a;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 4px 6px rgba(255, 140, 0, 0.1);
 }
 
 .search-icon-users {
@@ -146,7 +151,7 @@
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  color: #718096;
+  color: #ff8c00;
 }
 
 .search-input-users {
@@ -155,21 +160,27 @@
   border: 2px solid transparent;
   border-radius: 12px;
   font-size: 1rem;
-  background: white;
+  background: #0a0a0a;
+  color: #ffffff;
   transition: border-color 0.2s;
+}
+
+.search-input-users::placeholder {
+  color: #666666;
 }
 
 .search-input-users:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #ff8c00;
 }
 
 /* Users Section */
 .users-section {
-  background: white;
+  background: #0a0a0a;
   border-radius: 12px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 4px 6px rgba(255, 140, 0, 0.1);
 }
 
 /* Loading & Empty States */
@@ -182,8 +193,8 @@
 .loading-spinner-users {
   width: 50px;
   height: 50px;
-  border: 4px solid #e2e8f0;
-  border-top-color: #667eea;
+  border: 4px solid #1a1a1a;
+  border-top-color: #ff8c00;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1rem;
@@ -197,27 +208,27 @@
 
 .loading-text-users {
   font-size: 1rem;
-  color: #718096;
+  color: #999999;
   margin: 0;
 }
 
 .empty-icon-users {
   width: 64px;
   height: 64px;
-  color: #cbd5e0;
+  color: #333333;
   margin: 0 auto 1rem;
 }
 
 .empty-title-users {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a202c;
+  color: #ff8c00;
   margin: 0 0 0.5rem 0;
 }
 
 .empty-description-users {
   font-size: 1rem;
-  color: #718096;
+  color: #999999;
   margin: 0;
 }
 
@@ -229,16 +240,16 @@
 }
 
 .user-card {
-  background: #f7fafc;
-  border: 2px solid #e2e8f0;
+  background: #0a0a0a;
+  border: 2px solid #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.2s;
 }
 
 .user-card:hover {
-  border-color: #667eea;
-  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.1);
+  border-color: #ff8c00;
+  box-shadow: 0 8px 16px rgba(255, 140, 0, 0.2);
   transform: translateY(-4px);
 }
 
@@ -248,16 +259,16 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background: white;
-  border-bottom: 2px solid #e2e8f0;
+  background: #111111;
+  border-bottom: 2px solid #1a1a1a;
 }
 
 .user-avatar-card {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -274,7 +285,7 @@
 .user-name-card {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #1a202c;
+  color: #ff8c00;
   margin: 0 0 0.25rem 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -283,7 +294,7 @@
 
 .user-username-card {
   font-size: 0.875rem;
-  color: #718096;
+  color: #999999;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -307,13 +318,13 @@
 .detail-icon {
   width: 18px;
   height: 18px;
-  color: #667eea;
+  color: #ff8c00;
   flex-shrink: 0;
 }
 
 .detail-text {
   font-size: 0.875rem;
-  color: #4a5568;
+  color: #cccccc;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -324,8 +335,8 @@
   display: flex;
   gap: 0.75rem;
   padding: 1rem 1.5rem;
-  background: white;
-  border-top: 2px solid #e2e8f0;
+  background: #111111;
+  border-top: 2px solid #1a1a1a;
 }
 
 .btn-view-details,
@@ -345,24 +356,26 @@
 }
 
 .btn-view-details {
-  background: #e3f2fd;
-  color: #1976d2;
+  background: #1a0f00;
+  color: #ff8c00;
+  border: 1px solid #ff8c00;
 }
 
 .btn-view-details:hover {
-  background: #1976d2;
-  color: white;
+  background: #ff8c00;
+  color: #000000;
   transform: translateY(-2px);
 }
 
 .btn-delete-user {
-  background: #ffebee;
-  color: #d32f2f;
+  background: #1a0000;
+  color: #ff4444;
+  border: 1px solid #ff4444;
 }
 
 .btn-delete-user:hover {
-  background: #d32f2f;
-  color: white;
+  background: #ff4444;
+  color: #000000;
   transform: translateY(-2px);
 }
 

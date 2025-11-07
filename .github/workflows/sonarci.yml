@@ -1,0 +1,55 @@
+name: Node CI with SonarQube
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-sonar:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Run tests with coverage
+      - name: Run tests
+        run: npm run test:ci
+
+      # 5️⃣ List files (optional debug step)
+      - name: List project files
+        run: ls -la
+
+      # 6️⃣ Run SonarScanner
+      - name: Run SonarScanner
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          # Download SonarScanner CLI
+          curl -sSLo sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+          unzip -q sonar-scanner.zip -d sonar-scanner
+          chmod +x ./sonar-scanner/sonar-scanner-*/bin/sonar-scanner
+
+          # Execute SonarScanner
+          ./sonar-scanner/sonar-scanner-*/bin/sonar-scanner \
+            -Dsonar.projectKey=falcone-cipp \
+            -Dsonar.sources=src \
+            -Dsonar.exclusions=**/node_modules/**,**/tests/**,.github/workflows/sonarci.yml \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_TOKEN
